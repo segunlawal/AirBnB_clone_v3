@@ -10,6 +10,7 @@ from models.place import Place
 from models.review import Review
 from models.user import User
 
+
 @app_views.route('/status', strict_slashes=False)
 def status():
     """Returns JSON status of API"""
