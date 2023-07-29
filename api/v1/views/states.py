@@ -14,7 +14,7 @@ def get_states():
 
 
 @app_views.route("/states/<state_id>", methods=['GET'], strict_slashes=False)
-def get_state_by_id():
+def get_state_by_id(state_id):
     """Retrieves a State object by its id"""
     state = storage.get(State, state_id)
     if not state:
