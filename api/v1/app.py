@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """This module contains a flask application"""
-from flask import Flask
+from flask import Flask, make_response, jsonify
 from models import storage
 from api.v1.views import app_views
 from os import getenv
@@ -12,8 +12,14 @@ app.register_blueprint(app_views)
 
 @app.teardown_appcontext
 def close_storage(o):
-    """handle storage close"""
+    """Handles storage close"""
     storage.close()
+
+
+@app.errorhandler(404)
+def handle_error(error):
+    """Handles 404 errors"""
+    return make_response(jsonify({'error': "Not found"}), 404)
 
 
 if __name__ == "__main__":
