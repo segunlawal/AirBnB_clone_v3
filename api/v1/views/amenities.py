@@ -3,6 +3,7 @@
 from flask import jsonify, abort, request
 from api.v1.views import app_views
 from models.amenity import Amenity
+from models import storage
 
 
 @app_views.route('/amenites', strict_slashes=False)
