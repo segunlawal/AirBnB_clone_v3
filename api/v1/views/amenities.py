@@ -52,7 +52,7 @@ def create_amenity():
                  strict_slashes=False)
 def update_amenity(amenity_id):
     """Updates an Amenity object"""
-    obj = storage.get(State, state_id)
+    obj = storage.get(Amenity, amenity_id)
     if not obj:
         abort(404)
     r = request.get_json()
