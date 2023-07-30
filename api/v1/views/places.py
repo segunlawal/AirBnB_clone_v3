@@ -2,7 +2,9 @@
 """This module contains the Place view"""
 from flask import jsonify, abort, request
 from api.v1.views import app_views
-from models.amenity import Place
+from models.place import Place
+from models.city import City
+from models.user import User
 from models import storage
 
 
@@ -38,7 +40,8 @@ def delete_place_by_id(place_id):
     return jsonify({})
 
 
-@app_views.route("/cities/<city_id>/places", methods=['POST'], strict_slashes=False)
+@app_views.route("/cities/<city_id>/places", methods=['POST'],
+                 strict_slashes=False)
 def create_place(city_id):
     """Creates a Place object"""
     city = storage.get(City, city_id)
